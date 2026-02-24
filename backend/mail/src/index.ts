@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 import { startSendOtpConsumer } from "./consumer.js";
-
+import cors from "cors"
 
 
 const app = express();
@@ -20,7 +20,7 @@ const port = process.env.PORT;
 startSendOtpConsumer();
 // connectDb();
 // connectRabbitMq();
-
+app.use(cors())
 // app.use("api/v1",UserRoutes)
 app.listen(port, () => {
   console.log(`Listening to ${port}`);

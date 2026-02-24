@@ -1,6 +1,6 @@
 import express from "express";
 import { isAuth } from "../middlewares/isAuth.js";
-import { createNewchat, getAllChats, sendMessage } from "../controller/chat.js";
+import { createNewchat, getAllChats, getMessagesByChat, sendMessage } from "../controller/chat.js";
 import { upload } from "../middlewares/multer.js";
 
 const router = express.Router();
@@ -8,6 +8,6 @@ const router = express.Router();
 router.post("/chat/new", isAuth, createNewchat);
 router.get("/chat/all", isAuth, getAllChats);
 router.post("/message", isAuth, upload.single("image"), sendMessage);
-// router.get("/message/:chatId", isAuth, getMessagesByChat);
+router.get("/message/:chatId", isAuth, getMessagesByChat);
 
 export default router;
