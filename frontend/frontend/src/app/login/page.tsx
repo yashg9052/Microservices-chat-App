@@ -20,7 +20,7 @@ const LoginPage = () => {
     setLoading(true);
     try {
       const { data }: any = await axios.post(
-        `http://13.60.16.104:5000/api/v1/login`,
+        `http://localhost:5000/api/v1/login`,
         {
           email,
         },

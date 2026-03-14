@@ -26,7 +26,7 @@ export interface Message {
   seenAt?: string;
   createdAt: string;
 }
-const chat_service = "http://13.60.16.104:5002/";
+const chat_service = "http://localhost:5002";
 
 const ChatApp = () => {
   const { onlineUsers, socket } = SocketData();
