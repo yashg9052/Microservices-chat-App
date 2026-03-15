@@ -25,6 +25,12 @@ const LoginPage = () => {
           email,
         },
       );
+  
+      //   `http://localhost:5000/api/v1/login`,
+      //   {
+      //     email,
+      //   },
+      // );
       toast.success(data.message);
       router.push(`/verify?email=${email}`);
     } catch (error: any) {

@@ -33,25 +33,34 @@ export const loginUser = TryCatch(async (req, res) => {
 
 export const verifyUser = TryCatch(async (req, res) => {
   const { email, otp: enteredOtp } = req.body;
+
+  console.log(email);
+
   if (!email || !enteredOtp) {
-    res.status(400).json({ message: "Email and otp required" });
+    return res.status(400).json({ message: "Email and otp required" });
   }
+
   const otpKey = `otp:${email}`;
   const storedOtp = await redisClient.get(otpKey);
+
   if (!storedOtp || storedOtp !== enteredOtp) {
-    res.status(400).json({
+    return res.status(400).json({
       message: "Invalid or expired otp",
     });
   }
+
   await redisClient.del(otpKey);
+
   let user = await User.findOne({ email });
 
   if (!user) {
     const name = email.slice(0, 8);
     user = await User.create({ name, email });
   }
+
   const token = generateToken(user);
-  res.json({
+
+  return res.json({
     message: "User Verified",
     user,
     token,
