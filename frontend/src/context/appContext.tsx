@@ -12,8 +12,8 @@ import { createContext } from "react";
 import Cookies from "js-cookie";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
-export const user_service = "http://13.60.16.104:5000/";
-export const chat_service = "http://13.60.16.104:5002/";
+export const user_service = "http://13.60.16.104:5000";
+export const chat_service = "http://13.60.16.104:5002";
 export interface User {
   _id: string;
   name: string;

@@ -1,5 +1,5 @@
 "use client";
-import { useAppData } from "@/src/context/appContext";
+import { useAppData, user_service } from "@/src/context/appContext";
 import axios from "axios";
 import { ArrowRight, Mail } from "lucide-react";
 import { redirect, useRouter } from "next/navigation";
@@ -20,7 +20,7 @@ const LoginPage = () => {
     setLoading(true);
     try {
       const { data }: any = await axios.post(
-        `http://13.60.16.104:5000/api/v1/login`,
+        `${user_service}/api/v1/login`,
         {
           email,
         },
