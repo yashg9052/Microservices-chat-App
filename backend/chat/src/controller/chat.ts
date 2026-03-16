@@ -22,7 +22,7 @@ export const createNewchat = TryCatch(
     });
     if (existingChat) {
       res.json({
-        message: "Chat already exitst",
+        message: "Chat already exist",
         chatId: existingChat._id,
       });
       return;

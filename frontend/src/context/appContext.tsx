@@ -120,11 +120,12 @@ export const AppProvider: React.FC<AppContextProviderProps> = ({
       console.log(error);
     }
   }
-  useEffect(() => {
-    fetchUser();
+ useEffect(() => {
+  fetchUser().then(() => {
     fetchChats();
     fetchUsers();
-  }, []);
+  });
+}, []);
   return (
     <AppContext.Provider
       value={{

@@ -26,7 +26,7 @@ export interface Message {
   seenAt?: string;
   createdAt: string;
 }
-const chat_service = "http://13.60.16.104:5002/";
+const chat_service = "http://16.170.146.24:5002";
 
 const ChatApp = () => {
   const { onlineUsers, socket } = SocketData();
@@ -57,6 +57,7 @@ const ChatApp = () => {
   const createChat = async (u: User) => {
     try {
       const token = Cookies.get("token");
+      console.log(token)
       const { data }: any = await axios.post(
         `${chat_service}/api/v1/chat/new`,
         {
